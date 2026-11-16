@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>SmartDine · Ramaiah Restaurant</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--bg:#FBF6EA;--cd:#fff;--g:#1F4D36;--s:#E8892B;--tx:#243024;--mu:#6b7466;--bd:#eadfc8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#121a15;--cd:#1c2620;--tx:#f1ecdd;--mu:#a5ae9f;--bd:#2c3a31;--g:#2f7a54}}
+*{box-sizing:border-box}html,body{height:100%;margin:0}body{background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,"Noto Sans","Noto Sans Devanagari","Noto Sans Kannada","Noto Sans Tamil","Noto Sans Telugu","Noto Sans Malayalam",sans-serif}
+h1,h2,h3,.sf{font-family:Georgia,"Noto Serif",serif;margin:0}button{font:inherit;cursor:pointer;border:0;color:inherit}
+#app{max-width:480px;height:100%;margin:auto;display:flex;flex-direction:column;position:relative}
+#hd{background:var(--g);color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px}
+#hd .b{flex:1;min-width:0}#hd h1{font-size:19px}#hd small{opacity:.8}
+.ib{background:rgba(255,255,255,.15);color:#fff;border-radius:12px;min-width:44px;height:44px;font-size:18px;position:relative}
+.ib i{position:absolute;top:-4px;right:-4px;background:var(--s);color:#fff;font:700 11px/18px system-ui;min-width:18px;border-radius:9px;font-style:normal}
+#chat{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:12px}
+.hero{text-align:center;padding:18px;border-radius:22px;background:linear-gradient(160deg,var(--g),#2d6a4b);color:#fff}
+.hero .lg{font-size:46px}.hero h2{font-size:24px}.hero p{margin:4px 0 10px;opacity:.9}
+.tb{display:inline-block;background:var(--s);padding:4px 14px;border-radius:20px;font-weight:700}
+.m{max-width:88%;padding:11px 14px;border-radius:18px;animation:up .25s}.m.b{background:var(--cd);border:1px solid var(--bd);border-bottom-left-radius:4px}
+.m.u{background:var(--g);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.row{display:flex;gap:8px;align-items:flex-end}.av{width:34px;height:34px;border-radius:50%;background:var(--s);display:grid;place-items:center;flex:none}
+.dots span{display:inline-block;width:8px;height:8px;margin:0 2px;background:var(--mu);border-radius:50%;animation:bl 1s infinite}.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}
+@keyframes bl{50%{opacity:.2}}@keyframes up{from{opacity:0;transform:translateY(8px)}}
+.fc{background:var(--cd);border:1px solid var(--bd);border-radius:20px;padding:10px;margin-top:8px;width:100%}
+.ph{display:grid;place-items:center;font-size:48px;border-radius:14px;aspect-ratio:16/9;background:linear-gradient(135deg,hsl(var(--h) 85% 90%),hsl(var(--h) 75% 70%));overflow:hidden}.ph>*{grid-area:1/1}.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.fc h3{font-size:17px;margin:8px 0 2px;display:flex;justify-content:space-between;gap:8px}.fc p{margin:2px 0;color:var(--mu);font-size:14px}
+.pr{color:var(--s);font-weight:700;font-family:system-ui}.why{color:var(--g);font-size:13px;font-weight:600}
+.dt{display:inline-block;width:14px;height:14px;border:2px solid #2e9e4f;border-radius:3px;position:relative;vertical-align:-2px;margin-right:6px}.dt:after{content:"";position:absolute;inset:2px;border-radius:50%;background:#2e9e4f}.dt.n{border-color:#b3261e}.dt.n:after{background:#b3261e}
+.bt{display:flex;gap:8px;margin-top:8px}.bt button{flex:1;min-height:44px;border-radius:14px;font-weight:600}
+.p1{background:var(--g);color:#fff}.p2{background:transparent;border:1.5px solid var(--g)!important;color:var(--g)}.sa{background:var(--s);color:#fff}
+@media(prefers-color-scheme:dark){.p2{color:#8fd1ac;border-color:#8fd1ac!important}}
+#chips{display:flex;gap:8px;overflow-x:auto;padding:4px 14px 8px;flex:none}#chips button{flex:none;background:var(--cd);border:1px solid var(--bd);border-radius:20px;padding:9px 14px;font-size:14px;white-space:nowrap}
+.bar{display:flex;gap:8px;padding:8px 14px 12px;border-top:1px solid var(--bd);background:var(--bg)}
+.bar input{flex:1;min-width:0;height:48px;border-radius:24px;border:1.5px solid var(--bd);padding:0 18px;font:inherit;background:var(--cd);color:var(--tx)}
+.bar .sd{width:48px;height:48px;border-radius:50%;background:var(--s);color:#fff;font-size:20px}.bar .mn{border-radius:24px;padding:0 16px;background:var(--g);color:#fff;font-weight:700}
+.ov{position:absolute;inset:0;background:rgba(10,20,14,.55);display:flex;align-items:flex-end;z-index:5;animation:fd .2s}
+@keyframes fd{from{opacity:0}}
+.sh{background:var(--bg);width:100%;max-height:92%;overflow:auto;border-radius:26px 26px 0 0;padding:18px}
+.sh.full{height:100%;max-height:100%;border-radius:0}.sh h2{font-size:22px;margin-bottom:4px}
+.lg2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.lg2 button{background:var(--cd);border:1.5px solid var(--bd);border-radius:18px;padding:18px 8px;font-size:21px;font-weight:600}.lg2 small{display:block;font-size:12px;color:var(--mu);font-weight:400}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mg .fc{margin:0}.mg .ph{font-size:36px}.mg .bt{flex-direction:column}
+.tabs{display:flex;gap:8px;margin:10px 0}.tabs button{flex:1;padding:10px;border-radius:14px;background:var(--cd);border:1px solid var(--bd)}.tabs .on{background:var(--g);color:#fff}
+.ci{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd)}.ci .e{font-size:28px}.ci .n{flex:1}
+.q{display:flex;align-items:center;gap:8px}.q button{width:36px;height:36px;border-radius:50%;background:var(--cd);border:1.5px solid var(--g)}
+.tot{display:flex;justify-content:space-between;font-size:20px;font-weight:700;margin:12px 0}
+.big{width:100%;min-height:56px;border-radius:18px;background:var(--s);color:#fff;font-size:18px;font-weight:800;letter-spacing:.5px}
+.cd{font:800 76px/1 Georgia,serif;text-align:center;color:var(--g);margin:10px 0}@media(prefers-color-scheme:dark){.cd{color:#8fd1ac}}
+.pg{display:flex;justify-content:space-between;margin:14px 0;text-align:center;font-size:12px;color:var(--mu)}.pg div{flex:1}.pg b{display:block;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;background:var(--bd);line-height:26px;color:#fff}.pg .d b{background:var(--g)}.pg .c b{background:var(--s);animation:pl 1.2s infinite}
+@keyframes pl{50%{transform:scale(1.2)}}
+.cook{font-size:56px;text-align:center;animation:bn 1.2s infinite}@keyframes bn{50%{transform:translateY(-10px) rotate(6deg)}}
+.cf{text-align:center;font-size:30px;letter-spacing:8px;animation:bn 1.5s infinite}
+.cardb{background:var(--cd);border:1px solid var(--bd);border-radius:18px;padding:14px;margin:10px 0}.cardb div{display:flex;justify-content:space-between;padding:2px 0}
+#tt{position:absolute;bottom:90px;left:50%;transform:translateX(-50%);background:var(--g);color:#fff;padding:8px 18px;border-radius:20px;z-index:9;animation:up .2s}
+.qr{max-width:480px;margin:auto;padding:24px;text-align:center}.qr h1{font-size:34px;color:var(--g)}.qr #qc{background:#fff;display:inline-block;padding:18px;border-radius:24px;border:4px solid var(--s);margin:18px 0}
+.qr h2{font-size:26px;letter-spacing:1px}.qr input{width:100%;padding:12px;border-radius:12px;border:1.5px solid var(--bd);background:var(--cd);color:var(--tx);font:inherit;margin-top:6px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body><div id="app"></div>
+<script>
+const L={
+en:{n:"English",tag:"Discover the Taste of South India.",hello:"Namaste! Welcome to Ramaiah Restaurant. I’m your SmartDine food assistant. I can help you discover authentic South Indian dishes, understand their ingredients and spice levels, and recommend food according to your preferences and budget.",ask:"Ask for food ideas…",menu:"Explore Menu",know:"Know This Dish",add:"Add to Cart",cart:"Your Cart",place:"PLACE ORDER",total:"Total",found:"Here are my picks from our menu:",none:"Sorry, nothing on our menu matches that exactly. Try a higher budget or a different preference.",arrived:"Your food has arrived! Enjoy your delicious South Indian meal.",prep:"Your delicious food is being prepared!",veg:"Vegetarian",nv:"Non-vegetarian",mild:"Mild",med:"Medium",hot:"Hot",empty:"Your cart is empty.",ing:"Main ingredients",how:"Preparation",sp:"Spice level",all:"All",ok:"Your order has been successfully placed!",st:["Order placed","Preparing","Almost ready","Served"],est:"Demo estimate, not a kitchen-confirmed time.",back:"Back",neu:"Start a new order"},
+hi:{n:"हिंदी",tag:"दक्षिण भारत के स्वाद की खोज करें।",hello:"नमस्ते! रामैया रेस्टोरेंट में आपका स्वागत है। मैं आपका SmartDine फूड असिस्टेंट हूँ। मैं प्रामाणिक दक्षिण भारतीय व्यंजन, उनकी सामग्री और तीखेपन के बारे में बता सकता हूँ और आपकी पसंद व बजट के अनुसार सुझाव दे सकता हूँ।",ask:"खाने के बारे में पूछें…",menu:"मेनू देखें",know:"इस व्यंजन को जानें",add:"कार्ट में जोड़ें",cart:"आपका कार्ट",place:"ऑर्डर करें",total:"कुल",found:"हमारे मेनू से मेरे सुझाव:",none:"क्षमा करें, हमारे मेनू में ऐसा कुछ नहीं मिला। बजट या पसंद बदलकर देखें।",arrived:"आपका खाना आ गया है! दक्षिण भारतीय भोजन का आनंद लें।",prep:"आपका स्वादिष्ट खाना तैयार हो रहा है!",veg:"शाकाहारी",nv:"मांसाहारी",mild:"हल्का",med:"मध्यम",hot:"तीखा",empty:"आपका कार्ट खाली है।",ing:"मुख्य सामग्री",how:"बनाने की विधि",sp:"तीखापन",all:"सभी",ok:"आपका ऑर्डर सफलतापूर्वक दे दिया गया है!",st:["ऑर्डर दिया","तैयार हो रहा","लगभग तैयार","परोसा गया"],est:"यह डेमो अनुमान है, रसोई द्वारा पुष्टि किया समय नहीं।",back:"वापस",neu:"नया ऑर्डर"},
+kn:{n:"ಕನ್ನಡ",tag:"ದಕ್ಷಿಣ ಭಾರತದ ರುಚಿಯನ್ನು ಅನ್ವೇಷಿಸಿ.",hello:"ನಮಸ್ತೆ! ರಾಮಯ್ಯ ರೆಸ್ಟೋರೆಂಟ್‌ಗೆ ಸ್ವಾಗತ. ನಾನು ನಿಮ್ಮ SmartDine ಆಹಾರ ಸಹಾಯಕ.",ask:"ಆಹಾರದ ಬಗ್ಗೆ ಕೇಳಿ…",menu:"ಮೆನು ನೋಡಿ",know:"ಈ ಖಾದ್ಯ ತಿಳಿಯಿರಿ",add:"ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಿ",cart:"ನಿಮ್ಮ ಕಾರ್ಟ್",place:"ಆರ್ಡರ್ ಮಾಡಿ",total:"ಒಟ್ಟು",found:"ನಮ್ಮ ಮೆನುವಿನಿಂದ ನನ್ನ ಸಲಹೆಗಳು:",none:"ಕ್ಷಮಿಸಿ, ಹೊಂದುವ ಖಾದ್ಯ ಮೆನುವಿನಲ್ಲಿಲ್ಲ.",arrived:"ನಿಮ್ಮ ಆಹಾರ ಬಂದಿದೆ! ಸವಿಯಿರಿ.",prep:"ನಿಮ್ಮ ರುಚಿಕರ ಆಹಾರ ತಯಾರಾಗುತ್ತಿದೆ!",veg:"ಸಸ್ಯಾಹಾರಿ",nv:"ಮಾಂಸಾಹಾರಿ",mild:"ಸೌಮ್ಯ",med:"ಮಧ್ಯಮ",hot:"ಖಾರ",empty:"ನಿಮ್ಮ ಕಾರ್ಟ್ ಖಾಲಿ."},
+ta:{n:"தமிழ்",tag:"தென்னிந்திய சுவையைக் கண்டறியுங்கள்.",hello:"வணக்கம்! ராமையா உணவகத்திற்கு வரவேற்கிறோம். நான் உங்கள் SmartDine உணவு உதவியாளர்.",ask:"உணவு பற்றி கேளுங்கள்…",menu:"மெனுவைப் பார்க்க",know:"இந்த உணவை அறிக",add:"கார்ட்டில் சேர்",cart:"உங்கள் கார்ட்",place:"ஆர்டர் செய்",total:"மொத்தம்",found:"எங்கள் மெனுவிலிருந்து என் பரிந்துரைகள்:",none:"மன்னிக்கவும், பொருத்தமான உணவு மெனுவில் இல்லை.",arrived:"உங்கள் உணவு வந்துவிட்டது! மகிழ்ந்து சாப்பிடுங்கள்.",prep:"உங்கள் சுவையான உணவு தயாராகிறது!",veg:"சைவம்",nv:"அசைவம்",mild:"மிதம்",med:"நடுத்தரம்",hot:"காரம்",empty:"உங்கள் கார்ட் காலி."},
+te:{n:"తెలుగు",tag:"దక్షిణ భారత రుచిని కనుగొనండి.",hello:"నమస్తే! రామయ్య రెస్టారెంట్‌కి స్వాగతం. నేను మీ SmartDine ఫుడ్ అసిస్టెంట్‌ని.",ask:"ఆహారం గురించి అడగండి…",menu:"మెనూ చూడండి",know:"ఈ వంటకం తెలుసుకోండి",add:"కార్ట్‌కు జోడించండి",cart:"మీ కార్ట్",place:"ఆర్డర్ చేయండి",total:"మొత్తం",found:"మా మెనూ నుండి నా సూచనలు:",none:"క్షమించండి, సరిపోయే వంటకం మెనూలో లేదు.",arrived:"మీ ఆహారం వచ్చింది! ఆనందించండి.",prep:"మీ రుచికరమైన ఆహారం తయారవుతోంది!",veg:"శాకాహారం",nv:"మాంసాహారం",mild:"తేలిక",med:"మధ్యస్థం",hot:"కారం",empty:"మీ కార్ట్ ఖాళీ."},
+ml:{n:"മലയാളം",tag:"ദക്ഷിണേന്ത്യൻ രുചി കണ്ടെത്തൂ.",hello:"നമസ്തേ! രാമയ്യ റെസ്റ്റോറന്റിലേക്ക് സ്വാഗതം. ഞാൻ നിങ്ങളുടെ SmartDine ഫുഡ് അസിസ്റ്റന്റ്.",ask:"ഭക്ഷണത്തെക്കുറിച്ച് ചോദിക്കൂ…",menu:"മെനു കാണുക",know:"ഈ വിഭവം അറിയാം",add:"കാർട്ടിലേക്ക്",cart:"നിങ്ങളുടെ കാർട്ട്",place:"ഓർഡർ ചെയ്യൂ",total:"ആകെ",found:"ഞങ്ങളുടെ മെനുവിൽ നിന്നുള്ള നിർദ്ദേശങ്ങൾ:",none:"ക്ഷമിക്കണം, അനുയോജ്യമായ വിഭവം മെനുവിൽ ഇല്ല.",arrived:"നിങ്ങളുടെ ഭക്ഷണം എത്തി! ആസ്വദിക്കൂ.",prep:"നിങ്ങളുടെ രുചികരമായ ഭക്ഷണം തയ്യാറാകുന്നു!",veg:"വെജിറ്റേറിയൻ",nv:"നോൺ-വെജ്",mild:"മൃദു",med:"ഇടത്തരം",hot:"എരിവ്",empty:"നിങ്ങളുടെ കാർട്ട് ശൂന്യം."}};
+const CH={en:["Explore South Indian dishes","Recommend vegetarian food","Recommend non-vegetarian food","High-protein meals","Food under ₹200","Food under ₹500","Mildly spicy dishes","Best traditional Karnataka food"],
+hi:["दक्षिण भारतीय व्यंजन देखें","शाकाहारी सुझाव","मांसाहारी सुझाव","हाई-प्रोटीन भोजन","₹200 से कम","₹500 से कम","हल्के मसालेदार व्यंजन","कर्नाटक के पारंपरिक व्यंजन"]};
+const CQ=["explore south indian dishes","recommend vegetarian food","recommend non-vegetarian food","high-protein meals","food under ₹200","food under ₹500","mildly spicy dishes","best traditional karnataka food"];
+// id,name,veg,price,emoji,hue,spice(0-2),protein(0-3),karnataka,desc,ingredients,preparation
+const M=[
+[1,"Masala Dosa",1,100,"🌯",38,1,1,1,"Crisp golden dosa filled with spiced potato.","Rice, urad dal, potato, onion, mustard seeds, curry leaves, turmeric","Fermented batter spread thin on a hot griddle and filled with potato masala."],
+[2,"Idli Sambar",1,60,"🍚",50,0,1,0,"Soft steamed rice cakes with lentil sambar.","Rice, urad dal, toor dal, vegetables, tamarind, sambar powder","Batter steamed in moulds, served with sambar and chutney."],
+[3,"Medu Vada",1,70,"🍩",30,1,2,0,"Crunchy outside, fluffy inside lentil doughnuts.","Urad dal, black pepper, curry leaves, ginger, green chilli","Ground dal batter shaped into rings and deep fried."],
+[4,"Bisi Bele Bath",1,130,"🍛",20,1,2,1,"Karnataka’s signature spiced rice-lentil dish.","Rice, toor dal, vegetables, tamarind, curry leaves, traditional spice mix","Rice and dal slow cooked with vegetables and the spice blend, topped with ghee."],
+[5,"Ragi Mudde with Sambar",1,120,"🥣",25,0,1,1,"Healthy finger-millet balls with hot sambar.","Ragi (finger millet) flour, water, toor dal, vegetables, sambar powder","Ragi flour cooked and rolled into balls, swallowed with sambar."],
+[6,"Akki Rotti",1,100,"🫓",45,1,1,1,"Rice-flour flatbread with onion and herbs.","Rice flour, onion, coriander, green chilli, cumin, coconut","Dough patted flat by hand and roasted on a griddle."],
+[7,"Neer Dosa",1,110,"🥞",55,0,0,1,"Paper-thin, lacy rice crepes from coastal Karnataka.","Rice, coconut, salt, water","Thin watery batter poured onto a hot pan and folded."],
+[8,"Pongal",1,90,"🍲",48,0,1,0,"Comforting rice and moong dal with pepper and ghee.","Rice, moong dal, ghee, black pepper, cumin, cashew","Rice and dal cooked soft and tempered with ghee and spices."],
+[9,"Pesarattu",1,100,"🥬",110,1,2,0,"Green gram crepe, a protein-rich Andhra favourite.","Whole green moong, rice, green chilli, ginger, cumin","Soaked and ground batter spread thin on a griddle."],
+[10,"Mysore Masala Dosa",1,120,"🌯",10,2,1,1,"Dosa smeared with fiery red chutney and potato.","Rice, urad dal, potato, onion, red chilli-garlic chutney","Dosa brushed with red chutney, then filled with potato masala."],
+[11,"Curd Rice",1,80,"🍚",60,0,1,0,"Cooling rice and yogurt tempered with mustard.","Rice, curd, mustard seeds, curry leaves, ginger, green chilli","Soft rice mixed with curd and finished with tempering."],
+[12,"Goli Bajje",1,70,"🧆",35,1,1,1,"Mangalore-style soft, tangy fried fritters.","Maida, curd, rice flour, green chilli, ginger, coconut","Curd batter dropped in hot oil and fried until golden."],
+[13,"Chicken Chettinad",0,240,"🍗",8,2,3,0,"Fiery Tamil Nadu chicken curry with freshly ground spices.","Chicken, black pepper, red chilli, coconut, fennel, curry leaves","Chicken simmered in a roasted-spice and coconut masala."],
+[14,"Andhra Chicken Curry",0,220,"🍛",5,2,3,0,"Bold, hot Andhra-style chicken curry.","Chicken, red chilli, onion, tomato, garlic, ginger, curry leaves","Chicken cooked in a robust onion-tomato chilli masala."],
+[15,"Kerala Chicken Roast",0,250,"🍗",15,2,3,0,"Dark, aromatic Kerala roast with coconut slivers.","Chicken, shallots, coconut oil, black pepper, fennel, curry leaves","Chicken slow roasted in spices until dry and glossy."],
+[16,"Chicken Biryani",0,180,"🍛",42,1,3,0,"Fragrant basmati rice layered with spiced chicken.","Basmati rice, chicken, curd, onion, mint, biryani spices","Marinated chicken and rice layered and cooked on dum."]
+].map(a=>({id:a[0],n:a[1],v:a[2],p:a[3],e:a[4],h:a[5],s:a[6],pr:a[7],k:a[8],d:a[9],i:a[10],w:a[11]}));
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const LS=(k,v)=>{try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}};
+const P=new URLSearchParams(location.search);
+const TABLE=(P.get("table")||(location.hash.match(/table-(\d+)/)||[])[1]||"01").padStart(2,"0");
+const S={lang:LS("sd_lang"),cart:LS("sd_cart")||{},order:LS("sd_order"),chat:[],ov:null,flt:"all",stg:-1};
+const t=k=>(L[S.lang]||L.en)[k]??L.en[k];
+const spl=m=>t(["mild","med","hot"][m.s]);const byId=i=>M.find(m=>m.id==i);
+const dot=m=>`<span class="dt ${m.v?"":"n"}"></span>`;
+const save=()=>{LS("sd_cart",S.cart);LS("sd_order",S.order)};
+// ---- Recommendation engine (rule-based; swap this function for an LLM call behind a server endpoint later) ----
+function recommend(q){q=q.toLowerCase();
+ let b=(q.match(/(?:under|below|within|budget|less than|upto|up to|₹|rs\.?|inr)\s*₹?\s*(\d{2,5})/)||[])[1];b=b?+b:null;
+ const nv=/non[- ]?veg|chicken|biryani|meat|मांसाहारी/.test(q),v=!nv&&/veg|शाकाहारी/.test(q),pro=/protein/.test(q),mild=/mild/.test(q),ka=/karnataka|traditional/.test(q),combo=/meal|combo|combination|dinner|lunch|breakfast/.test(q),ex=/explore|unfamiliar/.test(q);
+ let r=M.filter(m=>(!b||m.p<=b)&&(!nv||!m.v)&&(!v||m.v)&&(!pro||m.pr>=2)&&(!mild||m.s<=1)&&(!ka||m.k));
+ if(ex)r=M.filter(m=>[4,5,7,9].includes(m.id)&&(!b||m.p<=b));
+ if(mild)r.sort((a,c)=>a.s-c.s);if(pro||combo)r.sort((a,c)=>c.pr-a.pr||a.p-c.p);
+ let tot=0;
+ if(combo){const o=[];for(const m of r)if(o.length<3&&(!b||tot+m.p<=b)){o.push(m);tot+=m.p}r=o}else r=r.slice(0,4);
+ const why=m=>[m.v?t("veg"):t("nv"),spl(m),b?"≤ ₹"+b:"",pro&&m.pr>=2?"High protein":"",ka?"Karnataka":""].filter(Boolean).join(" · ");
+ return{items:r.map(m=>({m,why:why(m)})),total:combo&&r.length?tot:0}}
+// ---- DISH IMAGES: paste an image link (or data: URI) between the quotes for each dish id. Empty = emoji tile shows. ----
+const IMG={1:"https://www.palatesdesire.com/wp-content/uploads/2019/09/Mysore_Masala_Dosa@Palates_Desire-1024x738.jpg",2:"",3:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJvqTiYLyqOQZD2RBkCYDEPX3QTsyB9lu8K1tQOa1VrA&s=10",4:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYTsqzzmbljCIYoFBK3VgKRGcdM6-feQL6JIx7q8ZxUw&s=10",5:"https://www.indianhealthyrecipes.com/wp-content/uploads/2021/02/ragi-mudde-recipe.jpg",6:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqxJL0wwPqmsahuSWbTMv5SNg2itDypBbGFTg55fGOsJ_gEerdYWjqtSc&s=10",7:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfUUZAGy8zVQo6oSgJXYwklWNaYFoHJcrtb8j3xgPqSADHKkR8CuQIKC81&s=10",8:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb4XwA696QSTn8DiMXNJe6r5GwQoNN6FBqI851AGSnYQ&s=10",9:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReloXZbkLz73OgIWE5LMf5pG9zKB-HU7y8RUqZ3d23n3_2zIEUvrZciuE&s=10",10:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqisl7JGiy36sxyvj2YSrWlosEoMDtiM783wZ601l0vA&s=10",11:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeZ-TqdD0JvEmyzcm54irchnSjr3N-Pf0iWKr80CyO9Q&s=10",12:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdlPCW0l2Or0e9VVTIPvmukZT-XkZmLi-ZS7xooEIhFA&s=10",13:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQdnKHG0doiZWXVp7rtR8Sx1qcIahEHhcEdKaXal1ayBGAjvByloZtK70&s=10",14:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQnZwrLgWplOZu_M3DGhHNb8xDo2GgT2XwyIR2zl7nAGR8dCaCiKaOaFI&s=10",15:"",16:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScn2ZJQAPGyo11tMu9hnxwy6JTWNgpF_a-lKOcx2actg&s=10"};
+// 1 Masala Dosa, 2 Idli Sambar, 3 Medu Vada, 4 Bisi Bele Bath, 5 Ragi Mudde, 6 Akki Rotti, 7 Neer Dosa, 8 Pongal, 9 Pesarattu, 10 Mysore Masala Dosa, 11 Curd Rice, 12 Goli Bajje, 13 Chicken Chettinad, 14 Andhra Chicken Curry, 15 Kerala Chicken Roast, 16 Chicken Biryani
+const ph=(m,st="")=>`<div class="ph" style="--h:${m.h};${st}"><span>${m.e}</span>${IMG[m.id]?`<img src="${IMG[m.id]}" alt="${m.n}" loading="lazy" onerror="this.remove()">`:""}</div>`;
+// ---- UI ----
+function card(m,why,small){return`<div class="fc">${ph(m)}<h3><span>${dot(m)}${esc(m.n)}</span><span class="pr">₹${m.p}</span></h3><p>${esc(m.d)}</p>${why?`<div class="why">${esc(why)}</div>`:""}<div class="bt"><button class="p2" data-a="know" data-i="${m.id}">${t("know")}</button><button class="p1" data-a="add" data-i="${m.id}">${t("add")}</button></div></div>`}
+const cnt=()=>Object.values(S.cart).reduce((a,b)=>a+b,0);
+const sum=()=>Object.entries(S.cart).reduce((a,[i,q])=>a+byId(i).p*q,0);
+function rend(){
+ $("#hd").innerHTML=`<div class="sf" style="font-size:30px">🍛</div><div class="b"><h1>Ramaiah Restaurant</h1><small>SmartDine · Table ${TABLE}</small></div>${S.order?`<button class="ib" data-a="track" aria-label="Order">⏱</button>`:""}<button class="ib" data-a="openlang" aria-label="Language">🌐</button><button class="ib" data-a="cart" aria-label="Cart">🛒${cnt()?`<i>${cnt()}</i>`:""}</button>`;
+ const msgs=S.chat.map(c=>c.typing?`<div class="row"><div class="av">🤖</div><div class="m b dots"><span></span><span></span><span></span></div></div>`:c.r=="u"?`<div class="m u">${esc(c.t)}</div>`:`<div class="row" style="align-items:flex-start"><div class="av">🤖</div><div style="flex:1;min-width:0"><div class="m b">${esc(c.t)}</div>${(c.items||[]).map(x=>card(x.m,x.why)).join("")}${c.total?`<div class="m b" style="margin-top:8px"><b>${t("total")}: ₹${c.total}</b></div>`:""}</div></div>`).join("");
+ $("#chat").innerHTML=`<div class="hero"><div class="lg">🪔</div><h2>Ramaiah Restaurant</h2><p>${t("tag")}</p><span class="tb">Table ${TABLE}</span></div>`+msgs;
+ const ch=CH[S.lang]||CH.en;$("#chips").innerHTML=ch.map((c,i)=>`<button data-a="chip" data-i="${i}">${esc(c)}</button>`).join("");
+ $("#q").placeholder=t("ask");$("#mn").textContent=t("menu");
+ const c=$("#chat");c.scrollTop=c.scrollHeight;ovr()}
+function ovr(){let o=S.ov,h="";
+ if(!S.lang)o="lang";
+ if(o=="lang")h=`<div class="sh"><h2>Welcome to Ramaiah Restaurant!</h2><p style="color:var(--mu);margin:0">Choose your preferred language to explore our menu.</p><div class="lg2">${Object.keys(L).map(k=>`<button data-a="lang" data-i="${k}">${L[k].n}${k!="en"?`<small>${["","Hindi","Kannada","Tamil","Telugu","Malayalam"][Object.keys(L).indexOf(k)]}</small>`:""}</button>`).join("")}</div></div>`;
+ else if(o=="menu"){const l=M.filter(m=>S.flt=="all"||(S.flt=="v")==!!m.v);h=`<div class="sh full"><div style="display:flex;justify-content:space-between;align-items:center"><h2>${t("menu")}</h2><button class="ib p1" data-a="close" aria-label="Close">✕</button></div><div class="tabs">${[["all",t("all")],["v",t("veg")],["n",t("nv")]].map(([k,l])=>`<button class="${S.flt==k?"on":""}" data-a="flt" data-i="${k}">${l}</button>`).join("")}</div><div class="mg">${l.map(m=>card(m)).join("")}</div></div>`}
+ else if(o=="cart"){const e=Object.entries(S.cart);h=`<div class="sh"><div style="display:flex;justify-content:space-between;align-items:center"><h2>${t("cart")} · Table ${TABLE}</h2><button class="ib p1" data-a="close" aria-label="Close">✕</button></div>${e.length?e.map(([i,q])=>{const m=byId(i);return`<div class="ci"><span class="e">${m.e}</span><div class="n"><b>${m.n}</b><br><span class="pr">₹${m.p} × ${q} = ₹${m.p*q}</span></div><div class="q"><button data-a="dec" data-i="${i}">−</button><b>${q}</b><button data-a="inc" data-i="${i}">+</button></div><button data-a="rm" data-i="${i}" aria-label="Remove" style="background:none;font-size:20px">🗑</button></div>`}).join("")+`<div class="tot"><span>${t("total")}</span><span>₹${sum()}</span></div><button class="big" data-a="place">${t("place")}</button>`:`<p style="text-align:center;padding:30px 0;color:var(--mu)">${t("empty")}</p><button class="big" data-a="menu">${t("menu")}</button>`}</div>`}
+ else if(o&&o[0]=="d"){const m=byId(o.slice(2));h=`<div class="sh">${ph(m,"font-size:72px")}<h2 style="margin-top:10px">${dot(m)}${m.n.toUpperCase()}</h2><p style="margin:4px 0">${m.d}</p><div class="cardb"><div><span>${t("ing")}</span></div><p style="margin:0">${m.i}.</p></div><div class="cardb"><div><span>${t("how")}</span></div><p style="margin:0">${m.w}</p></div><div class="cardb"><div><span>${t("sp")}</span><b>${"🌶".repeat(m.s+1)} ${spl(m)}</b></div><div><span>${m.v?t("veg"):t("nv")}</span><b class="pr">₹${m.p}</b></div></div><div class="bt"><button class="p2" data-a="close">${t("back")}</button><button class="p1" data-a="add" data-i="${m.id}">${t("add")}</button></div></div>`}
+ else if(o=="order"&&S.order){const od=S.order,done=Date.now()-od.t>=600000;h=`<div class="sh full"><div style="display:flex;justify-content:space-between;align-items:center"><h2>${t("ok")}</h2><button class="ib p1" data-a="close" aria-label="Close">✕</button></div><div class="cardb"><div><span>Order ID</span><b>${od.id}</b></div><div><span>Table</span><b>${TABLE}</b></div>${od.items.map(x=>`<div><span>${x.q} × ${x.n}</span><span>₹${x.p*x.q}</span></div>`).join("")}<div style="border-top:1px solid var(--bd);margin-top:6px;padding-top:6px"><b>${t("total")}</b><b class="pr">₹${od.total}</b></div></div>${done?`<div class="cf">🎉🍛✨</div><h2 style="text-align:center;margin:10px 0">${t("arrived")}</h2>`:`<div class="cook">🍳</div><div class="cd" id="cd">10:00</div><p style="text-align:center;margin:0;font-weight:600">${t("prep")}</p>`}<div class="pg">${t("st").map((s,i)=>`<div class="${i<S.stg||done?"d":i==S.stg?"c":""}"><b>${i<S.stg||done?"✓":i+1}</b>${s}</div>`).join("")}</div><p style="text-align:center;color:var(--mu);font-size:13px">${t("est")}</p>${done?`<button class="big" data-a="neu">${t("neu")}</button>`:""}</div>`}
+ $("#ov").innerHTML=h?`<div class="ov" data-ov="1">${h}</div>`:""}
+function tick(){const od=S.order;if(!od)return;const e=Date.now()-od.t,rem=Math.max(0,600000-e),g=rem==0?3:e<5000?0:e<420000?1:2;
+ const el=$("#cd");if(el){const s=Math.ceil(rem/1000);el.textContent=String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+ if(g!=S.stg){S.stg=g;if(S.ov=="order")ovr()}}
+function toast(x){const d=document.createElement("div");d.id="tt";d.textContent=x;$("#app").appendChild(d);setTimeout(()=>d.remove(),1200)}
+function bot(text,items,total){S.chat.push({typing:1});rend();setTimeout(()=>{S.chat=S.chat.filter(c=>!c.typing);S.chat.push({r:"b",t:text,items,total});rend()},700)}
+function send(q){q=q.trim();if(!q)return;S.chat.push({r:"u",t:q});const r=recommend(q);bot(r.items.length?t("found"):t("none"),r.items,r.total)}
+function welcome(){S.chat=[{r:"b",t:t("hello")}]}
+document.addEventListener("click",e=>{const a=e.target.closest("[data-a]");
+ if(!a){if(e.target.dataset.ov&&S.lang){S.ov=null;ovr()}return}
+ const i=a.dataset.i,x=a.dataset.a;
+ if(x=="lang"){S.lang=i;LS("sd_lang",i);S.ov=null;document.documentElement.lang=i;welcome();rend()}
+ else if(x=="openlang"){S.ov="lang";ovr()}
+ else if(x=="menu"){S.ov="menu";ovr()}else if(x=="cart"){S.ov="cart";ovr()}
+ else if(x=="close"){S.ov=null;ovr()}else if(x=="know"){S.ov="d:"+i;ovr()}
+ else if(x=="flt"){S.flt=i;ovr()}
+ else if(x=="add"||x=="inc"){S.cart[i]=(S.cart[i]||0)+1;save();if(x=="add")toast("✓ "+byId(i).n);rend()}
+ else if(x=="dec"){S.cart[i]=(S.cart[i]||0)-1;if(S.cart[i]<1)delete S.cart[i];save();rend()}
+ else if(x=="rm"){delete S.cart[i];save();rend()}
+ else if(x=="chip"){send(CQ[i])}
+ else if(x=="send"){const q=$("#q");send(q.value);q.value=""}
+ else if(x=="place"){const it=Object.entries(S.cart).map(([i,q])=>({n:byId(i).n,p:byId(i).p,q}));if(!it.length)return;
+  S.order={id:"SD-"+TABLE+"-"+Math.floor(1000+Math.random()*9000),t:Date.now(),items:it,total:sum()};S.cart={};S.stg=-1;save();S.ov="order";rend();tick()}
+ else if(x=="track"){S.ov="order";ovr();tick()}
+ else if(x=="neu"){S.order=null;save();S.ov=null;rend()}});
+// ---- QR page (open with #qr) ----
+function qrPage(){const base=()=>LS("sd_base")||location.origin+location.pathname;
+ document.body.innerHTML=`<div class="qr"><div style="font-size:44px">🍛</div><h1>SmartDine</h1><h2 class="sf">Ramaiah Restaurant</h2><div id="qc"></div><h2>SCAN TO EXPERIENCE SMARTDINE</h2><p style="font-size:20px;color:var(--s);margin:6px 0 20px">Explore. Discover. Order.</p><p id="u" style="word-break:break-all;color:var(--mu);font-size:13px"></p><label style="display:block;text-align:left;font-size:13px;color:var(--mu)">Public app URL (update after deploying)<input id="bu" value=""></label><div class="bt"><button class="p1" id="ub">Update QR</button></div></div>`;
+ const draw=()=>{const url=base().split("#")[0].split("?")[0]+"?table=01";$("#qc").innerHTML="";new QRCode($("#qc"),{text:url,width:260,height:260,colorDark:"#1F4D36",colorLight:"#ffffff"});$("#u").textContent=url};
+ $("#bu").value=base();$("#ub").onclick=()=>{LS("sd_base",$("#bu").value.trim());draw()};draw()}
+if(location.hash=="#qr")qrPage();else{
+ $("#app").innerHTML=`<div id="hd"></div><div id="chat"></div><div id="chips"></div><div class="bar"><button class="mn" id="mn" data-a="menu"></button><input id="q" autocomplete="off"><button class="sd" data-a="send" aria-label="Send">➤</button></div><div id="ov"></div>`;
+ $("#q").addEventListener("keydown",e=>{if(e.key=="Enter"){send(e.target.value);e.target.value=""}});
+ if(S.lang)document.documentElement.lang=S.lang;welcome();rend();setInterval(tick,250);tick()}
+</script></body></html>
